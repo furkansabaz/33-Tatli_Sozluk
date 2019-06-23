@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseFirestore
 class FikirEkleVC: UIViewController {
 
     
@@ -21,6 +22,8 @@ class FikirEkleVC: UIViewController {
     
     
     let placeholderText = "Fikrinizi Belirtin..."
+    
+    var secilenKategori = "Eglence"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,9 +39,41 @@ class FikirEkleVC: UIViewController {
     
 
     @IBAction func sgmntKategoriDegisti(_ sender: Any) {
+        
+        switch sgmntKategoriler.selectedSegmentIndex {
+        case 0 :
+            secilenKategori = Kategoriler.Eglence.rawValue
+        case 1 :
+            secilenKategori = Kategoriler.Absurt.rawValue
+        case 2 :
+            secilenKategori = Kategoriler.Gundem.rawValue
+        default :
+            secilenKategori = Kategoriler.Eglence.rawValue
+        }
+        
     }
     
     @IBAction func btnPaylasPressed(_ sender: Any) {
+        guard let kullaniciAdi = txtKullaniciAdi.text else {return}
+        
+        Firestore.firestore().collection(Fikirler_REF).addDocument(data: [
+            Kategori : secilenKategori,
+            Begeni_Sayisi : 0,
+            Yorum_Sayisi : 0,
+            Fikir_Text : txtFikir.text!,
+            Eklenme_Tarihi : FieldValue.serverTimestamp(),
+            Kullanici_Adi : kullaniciAdi
+        ]) { (hata) in
+            
+            if let hata = hata {
+                print("Document Hatası : \(hata.localizedDescription)")
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        }
+        
+        
     }
     
     
