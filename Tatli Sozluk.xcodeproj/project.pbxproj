@@ -8,23 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		3D304EAF22BD594300F03E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304EAE22BD594300F03E8A /* AppDelegate.swift */; };
-		3D304EB122BD594300F03E8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304EB022BD594300F03E8A /* ViewController.swift */; };
+		3D304EB122BD594300F03E8A /* AnaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304EB022BD594300F03E8A /* AnaVC.swift */; };
 		3D304EB422BD594300F03E8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D304EB222BD594300F03E8A /* Main.storyboard */; };
 		3D304EB622BD594400F03E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D304EB522BD594400F03E8A /* Assets.xcassets */; };
 		3D304EB922BD594400F03E8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D304EB722BD594400F03E8A /* LaunchScreen.storyboard */; };
 		3D304EC122BD5CE800F03E8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D304EC022BD5CE800F03E8A /* GoogleService-Info.plist */; };
+		3D304ED122BF98B300F03E8A /* FikirEkleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304ED022BF98B300F03E8A /* FikirEkleVC.swift */; };
 		E37750142552EB4CBBC94438 /* Pods_Tatli_Sozluk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC846A64B41C73EAAABF812 /* Pods_Tatli_Sozluk.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3D304EAB22BD594300F03E8A /* Tatli Sozluk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tatli Sozluk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D304EAE22BD594300F03E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D304EB022BD594300F03E8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D304EB022BD594300F03E8A /* AnaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaVC.swift; sourceTree = "<group>"; };
 		3D304EB322BD594300F03E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D304EB522BD594400F03E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D304EB822BD594400F03E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D304EBA22BD594400F03E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D304EC022BD5CE800F03E8A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D304ED022BF98B300F03E8A /* FikirEkleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirEkleVC.swift; sourceTree = "<group>"; };
 		67288EC426C19D472BAFA580 /* Pods-Tatli Sozluk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tatli Sozluk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tatli Sozluk/Pods-Tatli Sozluk.debug.xcconfig"; sourceTree = "<group>"; };
 		787CC077D9F7322AE991CCFB /* Pods-Tatli Sozluk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tatli Sozluk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tatli Sozluk/Pods-Tatli Sozluk.release.xcconfig"; sourceTree = "<group>"; };
 		FAC846A64B41C73EAAABF812 /* Pods_Tatli_Sozluk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tatli_Sozluk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,8 +74,10 @@
 		3D304EAD22BD594300F03E8A /* Tatli Sozluk */ = {
 			isa = PBXGroup;
 			children = (
+				3D304ECF22BF989100F03E8A /* Model */,
+				3D304ECE22BF988E00F03E8A /* View */,
+				3D304ECD22BF988800F03E8A /* Controller */,
 				3D304EAE22BD594300F03E8A /* AppDelegate.swift */,
-				3D304EB022BD594300F03E8A /* ViewController.swift */,
 				3D304EB222BD594300F03E8A /* Main.storyboard */,
 				3D304EB522BD594400F03E8A /* Assets.xcassets */,
 				3D304EB722BD594400F03E8A /* LaunchScreen.storyboard */,
@@ -81,6 +85,29 @@
 				3D304EC022BD5CE800F03E8A /* GoogleService-Info.plist */,
 			);
 			path = "Tatli Sozluk";
+			sourceTree = "<group>";
+		};
+		3D304ECD22BF988800F03E8A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3D304EB022BD594300F03E8A /* AnaVC.swift */,
+				3D304ED022BF98B300F03E8A /* FikirEkleVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3D304ECE22BF988E00F03E8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D304ECF22BF989100F03E8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9261820F269AA33D80478E12 /* Frameworks */ = {
@@ -216,7 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D304EB122BD594300F03E8A /* ViewController.swift in Sources */,
+				3D304ED122BF98B300F03E8A /* FikirEkleVC.swift in Sources */,
+				3D304EB122BD594300F03E8A /* AnaVC.swift in Sources */,
 				3D304EAF22BD594300F03E8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
