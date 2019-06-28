@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="152" width="414" height="710"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="qa1-tK-tBg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FikirCell" rowHeight="100" id="qa1-tK-tBg" customClass="FikirCell" customModule="Tatli_Sozluk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qa1-tK-tBg" id="TKN-Jf-Nqj">
@@ -92,6 +92,13 @@
                                                 <constraint firstItem="RVt-xK-q3M" firstAttribute="leading" secondItem="TKN-Jf-Nqj" secondAttribute="leadingMargin" id="qWS-XM-NgM"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgBegeni" destination="1Ew-VZ-yTr" id="8gk-dC-hB2"/>
+                                            <outlet property="lblBegeniSayisi" destination="Xeh-3f-gud" id="FeN-eO-t9G"/>
+                                            <outlet property="lblEklenmeTarihi" destination="Zje-pV-dgg" id="SoA-Qv-lSK"/>
+                                            <outlet property="lblFikirText" destination="RVt-xK-q3M" id="FPV-D9-gtG"/>
+                                            <outlet property="lblKullaniciAdi" destination="rep-2X-IhH" id="gOJ-6H-HFN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -115,6 +122,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sgmntKategoriler" destination="xGE-o1-Wcy" id="Oet-6a-goX"/>
+                        <outlet property="tableView" destination="a4s-Iv-Zwf" id="8jf-lm-PLp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
