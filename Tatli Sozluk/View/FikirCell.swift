@@ -25,7 +25,7 @@ class FikirCell: UITableViewCell {
         
         lblKullaniciAdi.text = fikir.kullaniciAdi
         lblFikirText.text = fikir.fikirText
-        lblBegeniSayisi.text = "\(fikir.begeniSayisi)"
+        lblBegeniSayisi.text = "\(fikir.begeniSayisi ?? 0)"
         
     }
 

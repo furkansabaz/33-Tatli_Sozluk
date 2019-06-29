@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseFirestore
 class AnaVC: UIViewController {
 
     @IBOutlet weak var sgmntKategoriler: UISegmentedControl!
@@ -17,6 +18,9 @@ class AnaVC: UIViewController {
     
     private var fikirler =  [Fikir]()
     
+    
+    private var fikirlerCollectionRef : CollectionReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,10 +28,40 @@ class AnaVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableView.automaticDimension
+        //tableView.estimatedRowHeight = 80
+        //tableView.rowHeight = UITableView.automaticDimension
+        
+        fikirlerCollectionRef = Firestore.firestore().collection(Fikirler_REF)
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        fikirlerCollectionRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
+            } else {
+                guard let snap = snapshot else { return}
+                for document in snap.documents {
+                    
+                    let data = document.data()
+                    
+                    let kullaniciAdi = data[Kullanici_Adi] as? String ?? "Misafir"
+                    let eklenmeTarihi = data[Eklenme_Tarihi] as? Date ?? Date()
+                    let fikirText = data[Fikir_Text] as? String ?? ""
+                    let yorumSayisi = data[Yorum_Sayisi] as? Int ?? 0
+                    let begeniSayisi = data[Begeni_Sayisi] as? Int ?? 0
+                    let documentId = document.documentID
+                    
+                    let yeniFikir = Fikir(kullaniciAdi: kullaniciAdi, eklenmeTarihi: eklenmeTarihi, fikirText: fikirText, yorumSayisi: yorumSayisi, begeniSayisi: begeniSayisi, documentId: documentId)
+                    self.fikirler.append(yeniFikir)
+                    
+                }
+                self.tableView.reloadData()
+            }
+            
+        }
+    }
 
 }
 
@@ -47,5 +81,9 @@ extension AnaVC : UITableViewDelegate , UITableViewDataSource {
             return UITableViewCell()
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
