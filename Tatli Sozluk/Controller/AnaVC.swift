@@ -45,36 +45,37 @@ class AnaVC: UIViewController {
     }
     
     func setListener() {
-        fikirlerListener = fikirlerCollectionRef.whereField(KATEGORI, isEqualTo: secilenKategori)
-            .order(by: Eklenme_Tarihi, descending: true)
-            .addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
-            } else {
-                self.fikirler.removeAll()
-                guard let snap = snapshot else { return}
-                for document in snap.documents {
-                    
-                    let data = document.data()
-                    
-                    let kullaniciAdi = data[Kullanici_Adi] as? String ?? "Misafir"
-                    
-                    let ts = data[Eklenme_Tarihi] as? Timestamp ?? Timestamp()
-                    let eklenmeTarihi = ts.dateValue()
-                    
-                    let fikirText = data[Fikir_Text] as? String ?? ""
-                    let yorumSayisi = data[Yorum_Sayisi] as? Int ?? 0
-                    let begeniSayisi = data[Begeni_Sayisi] as? Int ?? 0
-                    let documentId = document.documentID
-                    
-                    let yeniFikir = Fikir(kullaniciAdi: kullaniciAdi, eklenmeTarihi: eklenmeTarihi, fikirText: fikirText, yorumSayisi: yorumSayisi, begeniSayisi: begeniSayisi, documentId: documentId)
-                    self.fikirler.append(yeniFikir)
-                    
-                }
-                self.tableView.reloadData()
-            }
+        
+        if secilenKategori == Kategoriler.Populer.rawValue {
             
+            fikirlerListener = fikirlerCollectionRef
+                .order(by: Eklenme_Tarihi, descending: true)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
+                    } else {
+                        self.fikirler.removeAll()
+                        self.fikirler = Fikir.fikirGetir(snapshot: snapshot)
+                        self.tableView.reloadData()
+                    }
+                    
+            }
+        } else {
+            fikirlerListener = fikirlerCollectionRef.whereField(KATEGORI, isEqualTo: secilenKategori)
+                .order(by: Eklenme_Tarihi, descending: true)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
+                    } else {
+                        self.fikirler.removeAll()
+                        self.fikirler = Fikir.fikirGetir(snapshot: snapshot)
+                        self.tableView.reloadData()
+                    }
+                    
+            }
         }
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
