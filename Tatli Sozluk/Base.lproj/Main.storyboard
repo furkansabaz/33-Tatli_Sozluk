@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JX3-0P-gfB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XfH-LC-WIs">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--GirisVC-->
         <scene sceneID="1Ox-wA-XP8">
             <objects>
-                <viewController id="JX3-0P-gfB" sceneMemberID="viewController">
+                <viewController id="JX3-0P-gfB" customClass="GirisVC" customModule="Tatli_Sozluk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kK6-n1-ANo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,6 +48,9 @@
                                 <state key="normal" title="Giriş Yap">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnGirisYapPressed:" destination="JX3-0P-gfB" eventType="touchUpInside" id="EHW-LJ-Rgd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Henüz bir hesabınız yok mu?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV3-em-sxN">
                                 <rect key="frame" x="116" y="265" width="182" height="20"/>
@@ -66,6 +69,9 @@
                                 <state key="normal" title="Hesap Oluştur">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnHesapOlusturPressed:" destination="JX3-0P-gfB" eventType="touchUpInside" id="X9d-dv-vGD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,10 +91,115 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QGr-vC-dRv"/>
                     </view>
+                    <connections>
+                        <outlet property="btnGirisYap" destination="G1z-WS-Kv6" id="SFM-xW-ogt"/>
+                        <outlet property="btnHesapOlustur" destination="yrX-0P-3Od" id="h4A-Jq-lbt"/>
+                        <outlet property="txtEmailAdresi" destination="cGs-jT-SeF" id="MwE-7e-50B"/>
+                        <outlet property="txtParola" destination="edu-kc-0hi" id="w6u-Bm-INp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3P-Tt-gWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1113.0434782608697" y="80.357142857142847"/>
+        </scene>
+        <!--Kullanici OlusturVC-->
+        <scene sceneID="125-uz-W5F">
+            <objects>
+                <viewController id="XfH-LC-WIs" customClass="KullaniciOlusturVC" customModule="Tatli_Sozluk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zjo-1r-dKi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Adresiniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Dc-1xg">
+                                <rect key="frame" x="20" y="94" width="374" height="35"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="EHU-pJ-Fze"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parolanız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ho4-MF-LPL">
+                                <rect key="frame" x="20" y="149" width="374" height="35"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="gvi-ej-WhI"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kullanıcı Adınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cby-RH-kAw">
+                                <rect key="frame" x="20" y="204" width="374" height="35"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="OOi-Wn-7L6"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pK5-zA-CK9">
+                                <rect key="frame" x="132" y="314" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="FT7-yQ-DT3"/>
+                                    <constraint firstAttribute="height" constant="40" id="yA0-iG-86I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Vazgeçtim">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnVazgectimPressed:" destination="XfH-LC-WIs" eventType="touchUpInside" id="ekM-5E-gsi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afo-xn-avc">
+                                <rect key="frame" x="132" y="259" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.40875217320000001" green="0.79177510740000001" blue="0.99994677310000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YyF-2d-TNb"/>
+                                    <constraint firstAttribute="width" constant="150" id="tEP-z8-dKX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Hesabı Oluştur">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnHesapOlusturPressed:" destination="XfH-LC-WIs" eventType="touchUpInside" id="7A4-Uz-L0N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cby-RH-kAw" firstAttribute="leading" secondItem="Y0p-TZ-Tfr" secondAttribute="leading" constant="20" id="43g-z9-N3c"/>
+                            <constraint firstItem="Mfv-Dc-1xg" firstAttribute="top" secondItem="Y0p-TZ-Tfr" secondAttribute="top" constant="50" id="9wf-RN-f74"/>
+                            <constraint firstItem="Y0p-TZ-Tfr" firstAttribute="trailing" secondItem="Mfv-Dc-1xg" secondAttribute="trailing" constant="20" id="Dc0-7D-2CA"/>
+                            <constraint firstItem="Y0p-TZ-Tfr" firstAttribute="trailing" secondItem="cby-RH-kAw" secondAttribute="trailing" constant="20" id="Far-bP-e8I"/>
+                            <constraint firstItem="cby-RH-kAw" firstAttribute="top" secondItem="ho4-MF-LPL" secondAttribute="bottom" constant="20" id="N6f-ie-KWH"/>
+                            <constraint firstItem="pK5-zA-CK9" firstAttribute="centerX" secondItem="zjo-1r-dKi" secondAttribute="centerX" id="c6t-xp-MMO"/>
+                            <constraint firstItem="afo-xn-avc" firstAttribute="centerX" secondItem="zjo-1r-dKi" secondAttribute="centerX" id="gTs-3v-aD9"/>
+                            <constraint firstItem="Y0p-TZ-Tfr" firstAttribute="trailing" secondItem="ho4-MF-LPL" secondAttribute="trailing" constant="20" id="ocA-WC-4Eh"/>
+                            <constraint firstItem="Mfv-Dc-1xg" firstAttribute="leading" secondItem="Y0p-TZ-Tfr" secondAttribute="leading" constant="20" id="r1g-zF-b6I"/>
+                            <constraint firstItem="afo-xn-avc" firstAttribute="top" secondItem="cby-RH-kAw" secondAttribute="bottom" constant="20" id="uZB-Ah-5rq"/>
+                            <constraint firstItem="ho4-MF-LPL" firstAttribute="leading" secondItem="Y0p-TZ-Tfr" secondAttribute="leading" constant="20" id="vZK-tj-h5z"/>
+                            <constraint firstItem="ho4-MF-LPL" firstAttribute="top" secondItem="Mfv-Dc-1xg" secondAttribute="bottom" constant="20" id="x6F-h0-FhT"/>
+                            <constraint firstItem="pK5-zA-CK9" firstAttribute="top" secondItem="afo-xn-avc" secondAttribute="bottom" constant="15" id="yTN-4M-egY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y0p-TZ-Tfr"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnHesapOlustur" destination="afo-xn-avc" id="snn-gE-7RD"/>
+                        <outlet property="btnVazgectim" destination="pK5-zA-CK9" id="2xX-xV-PbI"/>
+                        <outlet property="txtEmailAdresi" destination="Mfv-Dc-1xg" id="01G-UN-J1B"/>
+                        <outlet property="txtKullaniciAdi" destination="cby-RH-kAw" id="ovo-Vh-tNi"/>
+                        <outlet property="txtParola" destination="ho4-MF-LPL" id="aXO-5o-bR2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKA-RC-kq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1913" y="67"/>
         </scene>
         <!--Tatlı Sözlük-->
         <scene sceneID="tne-QT-ifu">
