@@ -20,6 +20,7 @@ class AnaVC: UIViewController {
     
     
     private var fikirlerCollectionRef : CollectionReference!
+    private var fikirlerListener : ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +29,20 @@ class AnaVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //tableView.estimatedRowHeight = 80
-        //tableView.rowHeight = UITableView.automaticDimension
+        
         
         fikirlerCollectionRef = Firestore.firestore().collection(Fikirler_REF)
     }
 
     
+    
     override func viewWillAppear(_ animated: Bool) {
         
-        fikirlerCollectionRef.getDocuments { (snapshot, error) in
+       fikirlerListener = fikirlerCollectionRef.addSnapshotListener { (snapshot, error) in
             if let error = error {
                 debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
             } else {
+                self.fikirler.removeAll()
                 guard let snap = snapshot else { return}
                 for document in snap.documents {
                     
@@ -61,6 +63,11 @@ class AnaVC: UIViewController {
             }
             
         }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        fikirlerListener.remove()
     }
 
 }
@@ -83,7 +90,4 @@ extension AnaVC : UITableViewDelegate , UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
 }
