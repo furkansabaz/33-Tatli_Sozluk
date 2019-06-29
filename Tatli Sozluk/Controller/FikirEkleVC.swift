@@ -23,7 +23,7 @@ class FikirEkleVC: UIViewController {
     
     let placeholderText = "Fikrinizi Belirtin..."
     
-    var secilenKategori = "Eglence"
+    var secilenKategori = Kategoriler.Eglence.rawValue
     override func viewDidLoad() {
         super.viewDidLoad()
 

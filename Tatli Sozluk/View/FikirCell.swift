@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class FikirCell: UITableViewCell {
 
     @IBOutlet weak var lblKullaniciAdi: UILabel!
@@ -16,13 +16,31 @@ class FikirCell: UITableViewCell {
     @IBOutlet weak var imgBegeni: UIImageView!
     @IBOutlet weak var lblBegeniSayisi: UILabel!
     
+    var secilenFikir : Fikir!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imgBegeniTapped))
+        imgBegeni.addGestureRecognizer(tap)
+        imgBegeni.isUserInteractionEnabled = true
+        
     }
+    
+    @objc func imgBegeniTapped() {
+        
+        
+        //Firestore.firestore().collection(Fikirler_REF).document(secilenFikir.documentId).setData([Begeni_Sayisi : secilenFikir.begeniSayisi+1], merge: true)
+        
+        Firestore.firestore().document("Fikirler/\(secilenFikir.documentId!)").updateData([Begeni_Sayisi : secilenFikir.begeniSayisi+1])
+    }
+    
+    
     
     func gorunumAyarla(fikir : Fikir) {
         
+        secilenFikir = fikir
         lblKullaniciAdi.text = fikir.kullaniciAdi
         lblFikirText.text = fikir.fikirText
         lblBegeniSayisi.text = "\(fikir.begeniSayisi ?? 0)"
