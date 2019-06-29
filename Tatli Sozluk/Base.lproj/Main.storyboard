@@ -33,6 +33,7 @@
                                 </segments>
                                 <color key="tintColor" red="0.50539042079999996" green="0.78130169350000001" blue="0.99305996190000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
+                                    <action selector="kategoriChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="K6V-2L-5bo"/>
                                     <action selector="sgmntKategoriDegisti:" destination="BVd-eW-FGx" eventType="valueChanged" id="QmO-gm-HHP"/>
                                 </connections>
                             </segmentedControl>

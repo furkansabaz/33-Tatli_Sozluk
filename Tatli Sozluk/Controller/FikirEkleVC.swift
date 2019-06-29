@@ -57,7 +57,7 @@ class FikirEkleVC: UIViewController {
         guard let kullaniciAdi = txtKullaniciAdi.text else {return}
         
         Firestore.firestore().collection(Fikirler_REF).addDocument(data: [
-            Kategori : secilenKategori,
+            KATEGORI : secilenKategori,
             Begeni_Sayisi : 0,
             Yorum_Sayisi : 0,
             Fikir_Text : txtFikir.text!,

@@ -10,7 +10,7 @@ import Foundation
 
 
 let Fikirler_REF = "Fikirler"
-let Kategori = "Kategori"
+let KATEGORI = "Kategori"
 let Yorum_Sayisi = "YorumSayisi"
 let Begeni_Sayisi = "BegeniSayisi"
 let Fikir_Text = "FikirText"

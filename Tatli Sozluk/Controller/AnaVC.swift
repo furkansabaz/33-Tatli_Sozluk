@@ -22,6 +22,8 @@ class AnaVC: UIViewController {
     private var fikirlerCollectionRef : CollectionReference!
     private var fikirlerListener : ListenerRegistration!
     
+    private var secilenKategori = Kategoriler.Eglence.rawValue
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,8 +39,15 @@ class AnaVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        setListener()
+       
         
-       fikirlerListener = fikirlerCollectionRef.addSnapshotListener { (snapshot, error) in
+    }
+    
+    func setListener() {
+        fikirlerListener = fikirlerCollectionRef.whereField(KATEGORI, isEqualTo: secilenKategori)
+            .order(by: Eklenme_Tarihi, descending: true)
+            .addSnapshotListener { (snapshot, error) in
             if let error = error {
                 debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
             } else {
@@ -49,7 +58,10 @@ class AnaVC: UIViewController {
                     let data = document.data()
                     
                     let kullaniciAdi = data[Kullanici_Adi] as? String ?? "Misafir"
-                    let eklenmeTarihi = data[Eklenme_Tarihi] as? Date ?? Date()
+                    
+                    let ts = data[Eklenme_Tarihi] as? Timestamp ?? Timestamp()
+                    let eklenmeTarihi = ts.dateValue()
+                    
                     let fikirText = data[Fikir_Text] as? String ?? ""
                     let yorumSayisi = data[Yorum_Sayisi] as? Int ?? 0
                     let begeniSayisi = data[Begeni_Sayisi] as? Int ?? 0
@@ -63,13 +75,33 @@ class AnaVC: UIViewController {
             }
             
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         fikirlerListener.remove()
     }
 
+    
+    @IBAction func kategoriChanged(_ sender: Any) {
+        
+        switch sgmntKategoriler.selectedSegmentIndex {
+        case 0 :
+            secilenKategori = Kategoriler.Eglence.rawValue
+        case 1 :
+            secilenKategori = Kategoriler.Absurt.rawValue
+        case 2 :
+            secilenKategori = Kategoriler.Gundem.rawValue
+        case 3 :
+            secilenKategori = Kategoriler.Populer.rawValue
+        default :
+            secilenKategori = Kategoriler.Eglence.rawValue
+        }
+        fikirlerListener.remove()
+        setListener()
+    
+    }
+    
+    
 }
 
 

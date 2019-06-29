@@ -27,6 +27,11 @@ class FikirCell: UITableViewCell {
         lblFikirText.text = fikir.fikirText
         lblBegeniSayisi.text = "\(fikir.begeniSayisi ?? 0)"
         
+        let tarihFormat = DateFormatter()
+        tarihFormat.dateFormat = "dd MM YYYY, hh:mm"
+        let eklenmeTarihi = tarihFormat.string(from: fikir.eklenmeTarihi)
+        lblEklenmeTarihi.text = eklenmeTarihi
+        
     }
 
     
