@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class GirisVC: UIViewController {
     
     @IBOutlet weak var txtEmailAdresi: UITextField!
@@ -28,10 +28,22 @@ class GirisVC: UIViewController {
     
     
     @IBAction func btnGirisYapPressed(_ sender: Any) {
+        
+        guard let emailAdresi = txtEmailAdresi.text,
+            let parola = txtParola.text else { return }
+        
+        Auth.auth().signIn(withEmail: emailAdresi, password: parola) { (kullanici,hata) in
+            
+            if let hata = hata {
+                debugPrint("Oturum Açarken Hata Meydana Geldi : \(hata.localizedDescription)")
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
-    @IBAction func btnHesapOlusturPressed(_ sender: Any) {
-    }
+    
     
 
 }

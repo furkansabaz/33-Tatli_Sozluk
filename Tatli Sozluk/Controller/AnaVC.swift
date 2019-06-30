@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 class AnaVC: UIViewController {
 
     @IBOutlet weak var sgmntKategoriler: UISegmentedControl!
@@ -21,8 +22,8 @@ class AnaVC: UIViewController {
     
     private var fikirlerCollectionRef : CollectionReference!
     private var fikirlerListener : ListenerRegistration!
-    
     private var secilenKategori = Kategoriler.Eglence.rawValue
+    private var listenerHandle : AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,27 @@ class AnaVC: UIViewController {
         fikirlerCollectionRef = Firestore.firestore().collection(Fikirler_REF)
     }
 
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        if fikirlerListener != nil {
+            fikirlerListener.remove()
+        }
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        setListener()
+        
+        listenerHandle = Auth.auth().addStateDidChangeListener({ (auth, user)in
+            
+            if user == nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let girisVC = storyboard.instantiateViewController(withIdentifier: "GirisVC")
+                self.present(girisVC, animated: true, completion: nil)
+            } else {
+                self.setListener()
+            }
+        })
+        
+        
        
         
     }
@@ -78,9 +96,7 @@ class AnaVC: UIViewController {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        fikirlerListener.remove()
-    }
+    
 
     
     @IBAction func kategoriChanged(_ sender: Any) {
@@ -102,6 +118,14 @@ class AnaVC: UIViewController {
     
     }
     
+    @IBAction func btnOturumKapatPressed(_ sender: Any) {
+         let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch  let oturumHatasi as NSError {
+            debugPrint("Oturum Kapatılırken Hata Meydana Geldi : \(oturumHatasi.localizedDescription)")
+        }
+    }
     
 }
 
