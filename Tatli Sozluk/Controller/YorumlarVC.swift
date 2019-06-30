@@ -16,9 +16,14 @@ class YorumlarVC: UIViewController {
     @IBOutlet weak var txtYorum: UITextField!
     
     
+    var yorumlar = [Yorum]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         
     }
     
@@ -26,4 +31,21 @@ class YorumlarVC: UIViewController {
     }
     
 
+}
+extension YorumlarVC : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return yorumlar.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "YorumCell", for: indexPath) as? YorumCell {
+            cell.gorunumAyarla(yorum: yorumlar[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
+        
+    }
+    
 }

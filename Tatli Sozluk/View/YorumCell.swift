@@ -20,6 +20,19 @@ class YorumCell: UITableViewCell {
         super.awakeFromNib()
        
     }
+    
+    func gorunumAyarla(yorum : Yorum){
+        
+        lblKullaniciAdi.text = yorum.kullaniciAdi
+        lblYorum.text = yorum.yorumText
+        
+        
+        let tarihFormat = DateFormatter()
+        tarihFormat.dateFormat = "dd MM YYYY, hh:mm"
+        let eklenmeTarihi = tarihFormat.string(from: yorum.eklenmeTarihi)
+        lblTarih.text = eklenmeTarihi
+        
+    }
 
     
 

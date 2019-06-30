@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D08F94022C8E8220030599A /* YorumlarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08F93F22C8E8220030599A /* YorumlarVC.swift */; };
 		3D08F94222C8F2840030599A /* YorumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08F94122C8F2840030599A /* YorumCell.swift */; };
+		3D08F94822C8F91E0030599A /* Yorum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08F94722C8F91E0030599A /* Yorum.swift */; };
 		3D246A5622C6AA2300F7F45E /* Fikir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D246A5522C6AA2300F7F45E /* Fikir.swift */; };
 		3D246A5822C6AAEF00F7F45E /* FikirCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D246A5722C6AAEF00F7F45E /* FikirCell.swift */; };
 		3D304EAF22BD594300F03E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304EAE22BD594300F03E8A /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		3D08F93F22C8E8220030599A /* YorumlarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumlarVC.swift; sourceTree = "<group>"; };
 		3D08F94122C8F2840030599A /* YorumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumCell.swift; sourceTree = "<group>"; };
+		3D08F94722C8F91E0030599A /* Yorum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yorum.swift; sourceTree = "<group>"; };
 		3D246A5522C6AA2300F7F45E /* Fikir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fikir.swift; sourceTree = "<group>"; };
 		3D246A5722C6AAEF00F7F45E /* FikirCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirCell.swift; sourceTree = "<group>"; };
 		3D304EAB22BD594300F03E8A /* Tatli Sozluk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tatli Sozluk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				3DAE50A322BFCBFE00BD2674 /* Kategoriler.swift */,
 				3DAE50A522BFCCB800BD2674 /* Sabitler.swift */,
 				3D246A5522C6AA2300F7F45E /* Fikir.swift */,
+				3D08F94722C8F91E0030599A /* Yorum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				3D304ED122BF98B300F03E8A /* FikirEkleVC.swift in Sources */,
 				3D08F94022C8E8220030599A /* YorumlarVC.swift in Sources */,
+				3D08F94822C8F91E0030599A /* Yorum.swift in Sources */,
 				3DEF734122C8105900AFC5A1 /* KullaniciOlusturVC.swift in Sources */,
 				3D246A5822C6AAEF00F7F45E /* FikirCell.swift in Sources */,
 				3D246A5622C6AA2300F7F45E /* Fikir.swift in Sources */,
