@@ -11,12 +11,19 @@ import UIKit
 class YorumlarVC: UIViewController {
 
     var secilenFikir : Fikir!
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var txtYorum: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
     }
     
-
+    @IBAction func btnYorumEkleTapped(_ sender: Any) {
+    }
+    
 
 }

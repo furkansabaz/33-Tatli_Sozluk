@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D08F94022C8E8220030599A /* YorumlarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08F93F22C8E8220030599A /* YorumlarVC.swift */; };
+		3D08F94222C8F2840030599A /* YorumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08F94122C8F2840030599A /* YorumCell.swift */; };
 		3D246A5622C6AA2300F7F45E /* Fikir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D246A5522C6AA2300F7F45E /* Fikir.swift */; };
 		3D246A5822C6AAEF00F7F45E /* FikirCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D246A5722C6AAEF00F7F45E /* FikirCell.swift */; };
 		3D304EAF22BD594300F03E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304EAE22BD594300F03E8A /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		3D08F93F22C8E8220030599A /* YorumlarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumlarVC.swift; sourceTree = "<group>"; };
+		3D08F94122C8F2840030599A /* YorumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumCell.swift; sourceTree = "<group>"; };
 		3D246A5522C6AA2300F7F45E /* Fikir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fikir.swift; sourceTree = "<group>"; };
 		3D246A5722C6AAEF00F7F45E /* FikirCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirCell.swift; sourceTree = "<group>"; };
 		3D304EAB22BD594300F03E8A /* Tatli Sozluk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tatli Sozluk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				3D246A5722C6AAEF00F7F45E /* FikirCell.swift */,
+				3D08F94122C8F2840030599A /* YorumCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				3D304EB122BD594300F03E8A /* AnaVC.swift in Sources */,
 				3DAE50A622BFCCB800BD2674 /* Sabitler.swift in Sources */,
 				3D304EAF22BD594300F03E8A /* AppDelegate.swift in Sources */,
+				3D08F94222C8F2840030599A /* YorumCell.swift in Sources */,
 				3DEF733F22C80F1600AFC5A1 /* GirisVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
