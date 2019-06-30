@@ -16,6 +16,7 @@ class FikirCell: UITableViewCell {
     @IBOutlet weak var imgBegeni: UIImageView!
     @IBOutlet weak var lblBegeniSayisi: UILabel!
     
+    @IBOutlet weak var lblYorumSayisi: UILabel!
     var secilenFikir : Fikir!
     
     override func awakeFromNib() {
@@ -49,6 +50,7 @@ class FikirCell: UITableViewCell {
         tarihFormat.dateFormat = "dd MM YYYY, hh:mm"
         let eklenmeTarihi = tarihFormat.string(from: fikir.eklenmeTarihi)
         lblEklenmeTarihi.text = eklenmeTarihi
+        lblYorumSayisi.text = "\(fikir.yorumSayisi ?? 0)"
         
     }
 
