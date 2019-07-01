@@ -23,7 +23,7 @@ class YorumlarVC: UIViewController {
     let fireStore = Firestore.firestore()
     var kullaniciAdi : String!
     
-    
+    var yorumlarListener : ListenerRegistration!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +36,25 @@ class YorumlarVC: UIViewController {
         if let adi = Auth.auth().currentUser?.displayName {
             kullaniciAdi = adi
         }
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        yorumlarListener = fireStore.collection(Fikirler_REF).document(secilenFikir.documentId).collection(YORUMLAR_REF)
+            .order(by: Eklenme_Tarihi, descending: false)
+            .addSnapshotListener({ (snapshot, hata) in
+                
+                guard let snapshot = snapshot else {
+                    debugPrint("Yorumları Getirirken Hata Meydana Geldi : \(hata?.localizedDescription)")
+                    return
+                }
+                
+                self.yorumlar.removeAll()
+                self.yorumlar = Yorum.yorumlariGetir(snapshot: snapshot)
+                self.tableView.reloadData()
+            })
+        
     }
     
     @IBAction func btnYorumEkleTapped(_ sender: Any) {
