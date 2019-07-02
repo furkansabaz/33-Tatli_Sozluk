@@ -102,6 +102,21 @@ class YorumlarVC: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "YorumDuzenleSegue" {
+            
+            if let hedefVC = segue.destination as? YorumDuzenleVC {
+                
+                if let yorumVeri = sender as? (secilenYorum: Yorum, secilenFikir : Fikir) {
+                    
+                    hedefVC.yorumVerisi = yorumVeri
+                }
+            }
+        }
+        
+    }
+    
 
 }
 extension YorumlarVC : UITableViewDelegate, UITableViewDataSource {
@@ -181,6 +196,9 @@ extension YorumlarVC : YorumDelegate {
         
         let duzenleAction = UIAlertAction(title: "Yorumu Düzenle", style: .default) { (action) in
             //yorum düzenlenecek
+            
+            self.performSegue(withIdentifier: "YorumDuzenleSegue", sender: (yorum,self.secilenFikir))
+            self.dismiss(animated: true, completion: nil)
         }
         let iptalAction = UIAlertAction(title: "İptal Et", style: .cancel, handler: nil)
         
