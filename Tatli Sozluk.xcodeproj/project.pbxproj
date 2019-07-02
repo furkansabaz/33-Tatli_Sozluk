@@ -19,6 +19,7 @@
 		3D304EB922BD594400F03E8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D304EB722BD594400F03E8A /* LaunchScreen.storyboard */; };
 		3D304EC122BD5CE800F03E8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D304EC022BD5CE800F03E8A /* GoogleService-Info.plist */; };
 		3D304ED122BF98B300F03E8A /* FikirEkleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D304ED022BF98B300F03E8A /* FikirEkleVC.swift */; };
+		3D4BDED422CB42B900266E9E /* KlavyeAyarlamasi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4BDED322CB42B900266E9E /* KlavyeAyarlamasi.swift */; };
 		3DAE50A422BFCBFE00BD2674 /* Kategoriler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE50A322BFCBFE00BD2674 /* Kategoriler.swift */; };
 		3DAE50A622BFCCB800BD2674 /* Sabitler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE50A522BFCCB800BD2674 /* Sabitler.swift */; };
 		3DEF733F22C80F1600AFC5A1 /* GirisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF733E22C80F1600AFC5A1 /* GirisVC.swift */; };
@@ -41,6 +42,7 @@
 		3D304EBA22BD594400F03E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D304EC022BD5CE800F03E8A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D304ED022BF98B300F03E8A /* FikirEkleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirEkleVC.swift; sourceTree = "<group>"; };
+		3D4BDED322CB42B900266E9E /* KlavyeAyarlamasi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlavyeAyarlamasi.swift; sourceTree = "<group>"; };
 		3DAE50A322BFCBFE00BD2674 /* Kategoriler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategoriler.swift; sourceTree = "<group>"; };
 		3DAE50A522BFCCB800BD2674 /* Sabitler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabitler.swift; sourceTree = "<group>"; };
 		3DEF733E22C80F1600AFC5A1 /* GirisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirisVC.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		3D304EAD22BD594300F03E8A /* Tatli Sozluk */ = {
 			isa = PBXGroup;
 			children = (
+				3D4BDED222CB42A500266E9E /* Ekstra */,
 				3D304ECF22BF989100F03E8A /* Model */,
 				3D304ECE22BF988E00F03E8A /* View */,
 				3D304ECD22BF988800F03E8A /* Controller */,
@@ -130,11 +133,19 @@
 			isa = PBXGroup;
 			children = (
 				3DAE50A322BFCBFE00BD2674 /* Kategoriler.swift */,
-				3DAE50A522BFCCB800BD2674 /* Sabitler.swift */,
 				3D246A5522C6AA2300F7F45E /* Fikir.swift */,
 				3D08F94722C8F91E0030599A /* Yorum.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3D4BDED222CB42A500266E9E /* Ekstra */ = {
+			isa = PBXGroup;
+			children = (
+				3DAE50A522BFCCB800BD2674 /* Sabitler.swift */,
+				3D4BDED322CB42B900266E9E /* KlavyeAyarlamasi.swift */,
+			);
+			path = Ekstra;
 			sourceTree = "<group>";
 		};
 		9261820F269AA33D80478E12 /* Frameworks */ = {
@@ -281,6 +292,7 @@
 				3DAE50A422BFCBFE00BD2674 /* Kategoriler.swift in Sources */,
 				3D304EB122BD594300F03E8A /* AnaVC.swift in Sources */,
 				3DAE50A622BFCCB800BD2674 /* Sabitler.swift in Sources */,
+				3D4BDED422CB42B900266E9E /* KlavyeAyarlamasi.swift in Sources */,
 				3D304EAF22BD594300F03E8A /* AppDelegate.swift in Sources */,
 				3D08F94222C8F2840030599A /* YorumCell.swift in Sources */,
 				3DEF733F22C80F1600AFC5A1 /* GirisVC.swift in Sources */,

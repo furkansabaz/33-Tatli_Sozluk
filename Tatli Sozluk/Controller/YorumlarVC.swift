@@ -36,6 +36,8 @@ class YorumlarVC: UIViewController {
         if let adi = Auth.auth().currentUser?.displayName {
             kullaniciAdi = adi
         }
+        
+        self.view.klavyeAyarla()
     }
     
     
