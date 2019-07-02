@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 class FikirEkleVC: UIViewController {
 
     
@@ -62,7 +63,8 @@ class FikirEkleVC: UIViewController {
             Yorum_Sayisi : 0,
             Fikir_Text : txtFikir.text!,
             Eklenme_Tarihi : FieldValue.serverTimestamp(),
-            Kullanici_Adi : kullaniciAdi
+            Kullanici_Adi : kullaniciAdi,
+            KULLANICI_ID : Auth.auth().currentUser?.uid ?? ""
         ]) { (hata) in
             
             if let hata = hata {

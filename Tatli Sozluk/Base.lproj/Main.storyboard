@@ -284,13 +284,18 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="daireKaranlik" translatesAutoresizingMaskIntoConstraints="NO" id="ycX-4d-sfk">
+                                                    <rect key="frame" x="369" y="7" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="RVt-xK-q3M" secondAttribute="trailing" id="22W-YB-Icr"/>
                                                 <constraint firstItem="mFV-4E-uwx" firstAttribute="leading" secondItem="TKN-Jf-Nqj" secondAttribute="leadingMargin" id="65m-IW-fMU"/>
                                                 <constraint firstItem="rep-2X-IhH" firstAttribute="top" secondItem="TKN-Jf-Nqj" secondAttribute="topMargin" id="Bch-YO-gSY"/>
+                                                <constraint firstItem="ycX-4d-sfk" firstAttribute="centerY" secondItem="Zje-pV-dgg" secondAttribute="centerY" id="F8B-8h-LqS"/>
                                                 <constraint firstItem="RVt-xK-q3M" firstAttribute="top" secondItem="rep-2X-IhH" secondAttribute="bottom" constant="8" id="HrW-6f-ziw"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="mFV-4E-uwx" secondAttribute="bottom" constant="2.5" id="LpJ-RI-7v0"/>
+                                                <constraint firstAttribute="trailing" secondItem="ycX-4d-sfk" secondAttribute="trailing" constant="15" id="Smn-wO-MXT"/>
                                                 <constraint firstItem="Zje-pV-dgg" firstAttribute="centerY" secondItem="rep-2X-IhH" secondAttribute="centerY" id="YJ4-Ra-xa5"/>
                                                 <constraint firstItem="rep-2X-IhH" firstAttribute="leading" secondItem="TKN-Jf-Nqj" secondAttribute="leadingMargin" id="c1E-mc-Dyo"/>
                                                 <constraint firstItem="mFV-4E-uwx" firstAttribute="top" secondItem="RVt-xK-q3M" secondAttribute="bottom" constant="8.5" id="lfY-QD-FFR"/>
@@ -300,6 +305,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imgBegeni" destination="1Ew-VZ-yTr" id="8gk-dC-hB2"/>
+                                            <outlet property="imgSecenekler" destination="ycX-4d-sfk" id="XoT-sk-a3U"/>
                                             <outlet property="lblBegeniSayisi" destination="Xeh-3f-gud" id="FeN-eO-t9G"/>
                                             <outlet property="lblEklenmeTarihi" destination="Zje-pV-dgg" id="SoA-Qv-lSK"/>
                                             <outlet property="lblFikirText" destination="RVt-xK-q3M" id="FPV-D9-gtG"/>
@@ -343,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="783"/>
+            <point key="canvasLocation" x="1002.8985507246377" y="782.8125"/>
         </scene>
         <!--YorumlarVC-->
         <scene sceneID="oJ2-M7-hte">
@@ -412,6 +418,9 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="daireKaranlik" translatesAutoresizingMaskIntoConstraints="NO" id="SRO-aL-jBP">
+                                                    <rect key="frame" x="349" y="14" width="30" height="30"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="XOS-sQ-q2l" firstAttribute="top" secondItem="rjw-WA-TIs" secondAttribute="bottom" constant="11" id="0ge-B5-aav"/>
@@ -419,12 +428,15 @@
                                                 <constraint firstItem="yfB-fs-oaa" firstAttribute="centerY" secondItem="rjw-WA-TIs" secondAttribute="centerY" id="Efy-G9-cm8"/>
                                                 <constraint firstItem="XOS-sQ-q2l" firstAttribute="trailing" secondItem="3fX-Bn-gX0" secondAttribute="trailingMargin" id="I75-7C-xbg"/>
                                                 <constraint firstItem="rjw-WA-TIs" firstAttribute="top" secondItem="3fX-Bn-gX0" secondAttribute="topMargin" constant="8" id="Jui-pr-x5f"/>
+                                                <constraint firstItem="SRO-aL-jBP" firstAttribute="centerY" secondItem="yfB-fs-oaa" secondAttribute="centerY" id="NiU-k0-fSx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SRO-aL-jBP" secondAttribute="trailing" constant="15" id="eKk-fG-2Ii"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="XOS-sQ-q2l" secondAttribute="bottom" constant="7" id="eqc-u3-sc9"/>
                                                 <constraint firstItem="rjw-WA-TIs" firstAttribute="leading" secondItem="3fX-Bn-gX0" secondAttribute="leadingMargin" id="kc8-qM-DK3"/>
                                                 <constraint firstItem="yfB-fs-oaa" firstAttribute="leading" secondItem="rjw-WA-TIs" secondAttribute="trailing" constant="12" id="nIi-UN-EiG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imgSecenekler" destination="SRO-aL-jBP" id="Qqd-ZH-aQQ"/>
                                             <outlet property="lblKullaniciAdi" destination="rjw-WA-TIs" id="xVW-3F-xDX"/>
                                             <outlet property="lblTarih" destination="yfB-fs-oaa" id="gmS-D5-nsV"/>
                                             <outlet property="lblYorum" destination="XOS-sQ-q2l" id="qjc-Tf-lSW"/>
@@ -561,6 +573,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="daireKaranlik" width="30" height="30"/>
         <image name="postEkle" width="21" height="24"/>
         <image name="yildizRenkli" width="20" height="19"/>
         <image name="yorum" width="26" height="22"/>

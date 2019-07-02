@@ -14,7 +14,7 @@ class YorumCell: UITableViewCell {
     @IBOutlet weak var lblKullaniciAdi: UILabel!
     @IBOutlet weak var lblTarih: UILabel!
     @IBOutlet weak var lblYorum: UILabel!
-    
+    @IBOutlet weak var imgSecenekler: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
