@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 class FikirCell: UITableViewCell {
 
     @IBOutlet weak var lblKullaniciAdi: UILabel!
@@ -22,6 +23,7 @@ class FikirCell: UITableViewCell {
     
     var secilenFikir : Fikir!
     
+    var delegate : FikirDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -33,16 +35,12 @@ class FikirCell: UITableViewCell {
     }
     
     @objc func imgBegeniTapped() {
-        
-        
-        //Firestore.firestore().collection(Fikirler_REF).document(secilenFikir.documentId).setData([Begeni_Sayisi : secilenFikir.begeniSayisi+1], merge: true)
-        
         Firestore.firestore().document("Fikirler/\(secilenFikir.documentId!)").updateData([Begeni_Sayisi : secilenFikir.begeniSayisi+1])
     }
     
     
     
-    func gorunumAyarla(fikir : Fikir) {
+    func gorunumAyarla(fikir : Fikir,delegate : FikirDelegate?) {
         
         secilenFikir = fikir
         lblKullaniciAdi.text = fikir.kullaniciAdi
@@ -55,8 +53,26 @@ class FikirCell: UITableViewCell {
         lblEklenmeTarihi.text = eklenmeTarihi
         lblYorumSayisi.text = "\(fikir.yorumSayisi ?? 0)"
         
+        imgSecenekler.isHidden = true
+        self.delegate = delegate
+        
+        if fikir.kullaniciId == Auth.auth().currentUser?.uid {
+            imgSecenekler.isHidden = false
+            imgSecenekler.isUserInteractionEnabled = true
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(imgFikirSeceneklerPressed))
+            imgSecenekler.addGestureRecognizer(tap)
+        }
+        
     }
 
-    
+    @objc func imgFikirSeceneklerPressed() {
+        delegate?.seceneklerFikirPressed(fikir: secilenFikir)
+        
+    }
 
+}
+
+protocol FikirDelegate {
+    func seceneklerFikirPressed(fikir : Fikir)
 }

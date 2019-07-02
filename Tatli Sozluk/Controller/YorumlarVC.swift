@@ -113,11 +113,18 @@ extension YorumlarVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "YorumCell", for: indexPath) as? YorumCell {
-            cell.gorunumAyarla(yorum: yorumlar[indexPath.row])
+            cell.gorunumAyarla(yorum: yorumlar[indexPath.row],delegate:  self)
             return cell
         }
         return UITableViewCell()
         
     }
     
+}
+
+
+extension YorumlarVC : YorumDelegate {
+    func seceneklerYorumPressed(yorum: Yorum) {
+        print("Seçilen Yorum : \(yorum.yorumText!)")
+    }
 }
