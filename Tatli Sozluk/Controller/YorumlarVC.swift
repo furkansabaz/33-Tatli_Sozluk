@@ -125,6 +125,72 @@ extension YorumlarVC : UITableViewDelegate, UITableViewDataSource {
 
 extension YorumlarVC : YorumDelegate {
     func seceneklerYorumPressed(yorum: Yorum) {
-        print("Seçilen Yorum : \(yorum.yorumText!)")
+        
+        
+        let alert = UIAlertController(title: "Yorumu Düzenle", message: "Yorumunuzu düzenleyebilir veya silebilirsiniz", preferredStyle: .actionSheet)
+        
+        let silAction = UIAlertAction(title: "Yorumu Sil", style: .default) { (action) in
+//            self.fireStore.collection(Fikirler_REF)
+//                    .document(self.secilenFikir.documentId)
+//                .collection(YORUMLAR_REF).document(yorum.documentId).delete(completion: { (hata) in
+//                    if let hata = hata {
+//                        debugPrint("Yorumu Silerken Hata Meydana Geldi : \(hata.localizedDescription)")
+//                    } else {
+//                        alert.dismiss(animated: true, completion: nil)
+//                    }
+//                })
+        
+        
+            self.fireStore.runTransaction({ (transaction, hata) -> Any? in
+                
+                
+                let secilenFikirKayit : DocumentSnapshot
+                
+                do {
+                    try secilenFikirKayit = transaction.getDocument(self.fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId))
+                    
+                } catch let hata as NSError {
+                    debugPrint("Fikir Bulunamadı : \(hata.localizedDescription)")
+                    return nil
+                }
+                
+                
+                guard let eskiYorumSayisi = (secilenFikirKayit.data()?[Yorum_Sayisi] as? Int) else { return nil}
+                
+                transaction.updateData([Yorum_Sayisi : eskiYorumSayisi-1], forDocument: self.fikirRef)
+                
+                
+                let silincekYorumRef = self.fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId).collection(YORUMLAR_REF).document(yorum.documentId)
+                transaction.deleteDocument(silincekYorumRef)
+                return nil
+            }) { (nesne,hata) in
+                
+                if let hata = hata {
+                    debugPrint("Yorum Silerken Hata Meydana Geldi : \(hata.localizedDescription)")
+                } else {
+                    alert.dismiss(animated: true, completion: nil)
+                }
+                
+            }
+        
+        
+        
+        
+        
+        }
+        
+        let duzenleAction = UIAlertAction(title: "Yorumu Düzenle", style: .default) { (action) in
+            //yorum düzenlenecek
+        }
+        let iptalAction = UIAlertAction(title: "İptal Et", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(silAction)
+        alert.addAction(duzenleAction)
+        alert.addAction(iptalAction)
+        present(alert, animated: true, completion: nil)
+        
+        
+        
     }
 }
