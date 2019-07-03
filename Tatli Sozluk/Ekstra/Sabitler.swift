@@ -25,3 +25,5 @@ let KULLANICI_ID = "KullaniciId"
 
 let YORUMLAR_REF = "Yorumlar"
 let YORUM_TEXT = "YorumText"
+
+let BEGENI_REF = "BegenenKullanicilar"
