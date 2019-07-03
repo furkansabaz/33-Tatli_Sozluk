@@ -61,7 +61,7 @@ class YorumlarVC: UIViewController {
     
     @IBAction func btnYorumEkleTapped(_ sender: Any) {
         
-        guard let yorumText = txtYorum.text else {return}
+        guard let yorumText = txtYorum.text, txtYorum.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty != true else {return}
         
         fireStore.runTransaction({ (transection, errorPointer) -> Any? in
             

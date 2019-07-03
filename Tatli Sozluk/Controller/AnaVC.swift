@@ -172,6 +172,82 @@ extension AnaVC : UITableViewDelegate , UITableViewDataSource {
 
 extension AnaVC : FikirDelegate {
     func seceneklerFikirPressed(fikir: Fikir) {
-        print("Seçilen Fikir : \(fikir.fikirText!)")
+        
+        
+        let alert = UIAlertController(title: "Sil", message: "Paylaşmınızı silmek mi istiyorsunuz?", preferredStyle: .actionSheet)
+        
+        let silAction = UIAlertAction(title: "Paylaşımı Sil", style: .default) { (action) in
+            //fikir silinecek
+            let yorumlarCollRef = Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).collection(YORUMLAR_REF)
+            
+            
+            self.yorumlariSil(yorumCollection: yorumlarCollRef, completion: { (hata) in
+                
+                
+                if let hata = hata {
+                    debugPrint("Fikir Silinirken Ona Ait Yorumları Silerken Hata Meydana Geldi : \(hata.localizedDescription)")
+                } else {
+                    
+                    Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).delete { (hata) in
+                        
+                        if let hata = hata {
+                            debugPrint("Fikir Silinirken Hata Meydana Geldi : \(hata.localizedDescription)")
+                        } else {
+                            alert.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+                
+                
+                
+            })
+            
+            
+            
+        }
+        
+        let iptalAction = UIAlertAction(title: "İptal Et", style: .cancel, handler: nil)
+        
+        alert.addAction(silAction)
+        alert.addAction(iptalAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func yorumlariSil(yorumCollection : CollectionReference, silinecekKayitSayisi : Int = 100, completion : @escaping (Error?) -> ()) {
+        
+        
+        yorumCollection.limit(to: silinecekKayitSayisi).getDocuments { (kayitSetleri, hata) in
+            
+            guard let kayitSetleri = kayitSetleri else {
+                completion(hata)
+                return
+            }
+            
+            guard kayitSetleri.count > 0  else {
+                completion(nil)
+                return
+            }
+            
+            
+            let batch = yorumCollection.firestore.batch()
+            
+            kayitSetleri.documents.forEach {    batch.deleteDocument($0.reference)}
+            
+            batch.commit { (batchHata) in
+                
+                if let hata = batchHata {
+                    completion(hata)
+                } else {
+                    self.yorumlariSil(yorumCollection: yorumCollection, silinecekKayitSayisi: silinecekKayitSayisi, completion: completion)
+                }
+                
+            }
+            
+        }
+        
+        
+        
+        
     }
 }
