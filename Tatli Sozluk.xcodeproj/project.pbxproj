@@ -24,6 +24,7 @@
 		3D4BDED822CB9F5800266E9E /* YorumDuzenleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4BDED722CB9F5800266E9E /* YorumDuzenleVC.swift */; };
 		3DAE50A422BFCBFE00BD2674 /* Kategoriler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE50A322BFCBFE00BD2674 /* Kategoriler.swift */; };
 		3DAE50A622BFCCB800BD2674 /* Sabitler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE50A522BFCCB800BD2674 /* Sabitler.swift */; };
+		3DBDEF9322CE17480021D0F0 /* Uzantilar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDEF9222CE17480021D0F0 /* Uzantilar.swift */; };
 		3DEF733F22C80F1600AFC5A1 /* GirisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF733E22C80F1600AFC5A1 /* GirisVC.swift */; };
 		3DEF734122C8105900AFC5A1 /* KullaniciOlusturVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF734022C8105900AFC5A1 /* KullaniciOlusturVC.swift */; };
 		E37750142552EB4CBBC94438 /* Pods_Tatli_Sozluk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC846A64B41C73EAAABF812 /* Pods_Tatli_Sozluk.framework */; };
@@ -49,6 +50,7 @@
 		3D4BDED722CB9F5800266E9E /* YorumDuzenleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumDuzenleVC.swift; sourceTree = "<group>"; };
 		3DAE50A322BFCBFE00BD2674 /* Kategoriler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategoriler.swift; sourceTree = "<group>"; };
 		3DAE50A522BFCCB800BD2674 /* Sabitler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabitler.swift; sourceTree = "<group>"; };
+		3DBDEF9222CE17480021D0F0 /* Uzantilar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uzantilar.swift; sourceTree = "<group>"; };
 		3DEF733E22C80F1600AFC5A1 /* GirisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirisVC.swift; sourceTree = "<group>"; };
 		3DEF734022C8105900AFC5A1 /* KullaniciOlusturVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KullaniciOlusturVC.swift; sourceTree = "<group>"; };
 		67288EC426C19D472BAFA580 /* Pods-Tatli Sozluk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tatli Sozluk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tatli Sozluk/Pods-Tatli Sozluk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				3DAE50A522BFCCB800BD2674 /* Sabitler.swift */,
 				3D4BDED322CB42B900266E9E /* KlavyeAyarlamasi.swift */,
+				3DBDEF9222CE17480021D0F0 /* Uzantilar.swift */,
 			);
 			path = Ekstra;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				3D304ED122BF98B300F03E8A /* FikirEkleVC.swift in Sources */,
 				3D4BDED822CB9F5800266E9E /* YorumDuzenleVC.swift in Sources */,
 				3D08F94022C8E8220030599A /* YorumlarVC.swift in Sources */,
+				3DBDEF9322CE17480021D0F0 /* Uzantilar.swift in Sources */,
 				3D08F94822C8F91E0030599A /* Yorum.swift in Sources */,
 				3DEF734122C8105900AFC5A1 /* KullaniciOlusturVC.swift in Sources */,
 				3D246A5822C6AAEF00F7F45E /* FikirCell.swift in Sources */,

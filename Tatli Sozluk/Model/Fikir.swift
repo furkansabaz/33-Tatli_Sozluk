@@ -35,7 +35,7 @@ class Fikir {
     
     
     
-    class func fikirGetir(snapshot : QuerySnapshot?, gununFikirleri : Bool = false) -> [Fikir] {
+    class func fikirGetir(snapshot : QuerySnapshot?,begeniyeGore : Bool = false, yorumaGore : Bool = false) -> [Fikir] {
         
         var fikirler = [Fikir]()
         guard let snap = snapshot else { return fikirler}
@@ -48,9 +48,6 @@ class Fikir {
             let ts = data[Eklenme_Tarihi] as? Timestamp ?? Timestamp()
             let eklenmeTarihi = ts.dateValue()
             
-            if gununFikirleri == true && Calendar.current.isDateInToday(eklenmeTarihi) == false {
-                continue
-            }
             
             let fikirText = data[Fikir_Text] as? String ?? ""
             let yorumSayisi = data[Yorum_Sayisi] as? Int ?? 0
@@ -61,6 +58,13 @@ class Fikir {
             let yeniFikir = Fikir(kullaniciAdi: kullaniciAdi, eklenmeTarihi: eklenmeTarihi, fikirText: fikirText, yorumSayisi: yorumSayisi, begeniSayisi: begeniSayisi, documentId: documentId, kullaniciId: kullaniciId)
             fikirler.append(yeniFikir)
             
+        }
+        
+        if begeniyeGore {
+            fikirler.sort { $0.begeniSayisi > $1.begeniSayisi  }
+        }
+        if yorumaGore {
+            fikirler.sort {  $0.yorumSayisi > $1.yorumSayisi }
         }
         return fikirler
         
