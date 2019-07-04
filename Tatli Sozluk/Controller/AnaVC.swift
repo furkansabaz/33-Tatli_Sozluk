@@ -67,13 +67,13 @@ class AnaVC: UIViewController {
         if secilenKategori == Kategoriler.Populer.rawValue {
             
             fikirlerListener = fikirlerCollectionRef
-                .order(by: Eklenme_Tarihi, descending: true)
+                .order(by: Begeni_Sayisi, descending: true)
                 .addSnapshotListener { (snapshot, error) in
                     if let error = error {
                         debugPrint("Kayıtları Getirirken Hata Meydana Geldi : \(error.localizedDescription)")
                     } else {
                         self.fikirler.removeAll()
-                        self.fikirler = Fikir.fikirGetir(snapshot: snapshot)
+                        self.fikirler = Fikir.fikirGetir(snapshot: snapshot, gununFikirleri: true)
                         self.tableView.reloadData()
                     }
                     
