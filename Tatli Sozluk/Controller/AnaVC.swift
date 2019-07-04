@@ -180,27 +180,39 @@ extension AnaVC : FikirDelegate {
             //fikir silinecek
             let yorumlarCollRef = Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).collection(YORUMLAR_REF)
             
+            let begenilerCollRef = Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).collection(BEGENI_REF)
             
-            self.yorumlariSil(yorumCollection: yorumlarCollRef, completion: { (hata) in
-                
+            
+            self.topluKayitSil(collectionRef: begenilerCollRef, completion: { (hata) in
                 
                 if let hata = hata {
-                    debugPrint("Fikir Silinirken Ona Ait Yorumları Silerken Hata Meydana Geldi : \(hata.localizedDescription)")
+                    debugPrint("Beğenileri Silerken Hata Meydana Geldi : \(hata.localizedDescription)")
                 } else {
-                    
-                    Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).delete { (hata) in
+                    self.topluKayitSil(collectionRef: yorumlarCollRef, completion: { (hata) in
+                        
                         
                         if let hata = hata {
-                            debugPrint("Fikir Silinirken Hata Meydana Geldi : \(hata.localizedDescription)")
+                            debugPrint("Fikir Silinirken Ona Ait Yorumları Silerken Hata Meydana Geldi : \(hata.localizedDescription)")
                         } else {
-                            alert.dismiss(animated: true, completion: nil)
+                            
+                            Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).delete { (hata) in
+                                
+                                if let hata = hata {
+                                    debugPrint("Fikir Silinirken Hata Meydana Geldi : \(hata.localizedDescription)")
+                                } else {
+                                    alert.dismiss(animated: true, completion: nil)
+                                }
+                            }
                         }
-                    }
+                        
+                        
+                        
+                    })
                 }
-                
-                
-                
             })
+            
+            
+            
             
             
             
@@ -214,10 +226,10 @@ extension AnaVC : FikirDelegate {
         
     }
     
-    func yorumlariSil(yorumCollection : CollectionReference, silinecekKayitSayisi : Int = 100, completion : @escaping (Error?) -> ()) {
+    func topluKayitSil(collectionRef : CollectionReference, silinecekKayitSayisi : Int = 100, completion : @escaping (Error?) -> ()) {
         
         
-        yorumCollection.limit(to: silinecekKayitSayisi).getDocuments { (kayitSetleri, hata) in
+        collectionRef.limit(to: silinecekKayitSayisi).getDocuments { (kayitSetleri, hata) in
             
             guard let kayitSetleri = kayitSetleri else {
                 completion(hata)
@@ -230,7 +242,7 @@ extension AnaVC : FikirDelegate {
             }
             
             
-            let batch = yorumCollection.firestore.batch()
+            let batch = collectionRef.firestore.batch()
             
             kayitSetleri.documents.forEach {    batch.deleteDocument($0.reference)}
             
@@ -239,7 +251,7 @@ extension AnaVC : FikirDelegate {
                 if let hata = batchHata {
                     completion(hata)
                 } else {
-                    self.yorumlariSil(yorumCollection: yorumCollection, silinecekKayitSayisi: silinecekKayitSayisi, completion: completion)
+                    self.topluKayitSil(collectionRef: collectionRef, silinecekKayitSayisi: silinecekKayitSayisi, completion: completion)
                 }
                 
             }
